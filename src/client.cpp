@@ -39,7 +39,18 @@ Client::Client(userver::clients::http::Client& http_client,
                const ClientConfig& config)
     : http_client_(http_client), secdist_(secdist), config_(config) {}
 
-CurrentWeather Client::FetchCurrentWeather(const Coords& coords) {
+CurrentWeather Client::FetchCurrentWeather(const Coords& coords) const {
+  auto response = SendRequest("/fact", coords);
+  return json::FromString(response->body()).As<CurrentWeather>();
+}
+
+TimelineInfo Client::FetchTimelineInfo(const Coords& coords) const {
+  auto response = SendRequest("/nowcast/timeline", coords);
+  return json::FromString(response->body()).As<TimelineInfo>();
+}
+
+std::shared_ptr<userver::clients::http::Response> Client::SendRequest(
+    const std::string& path, const Coords& coords) const {
   auto secdist_snapshot = secdist_.GetSnapshot();
   const auto secdist = secdist_snapshot->Get<MeteumSecdist>();
   http::headers::HeaderMap headers = {
@@ -52,15 +63,13 @@ CurrentWeather Client::FetchCurrentWeather(const Coords& coords) {
   };
 
   std::string url =
-      http::MakeUrl(fmt::format("{}/fact", config_.meteum_url), args);
-  auto response = http_client_.CreateRequest()
-                      .get(url)
-                      .headers(headers)
-                      .retry(config_.retries)
-                      .timeout(config_.timeout)
-                      .perform();
-
-  return json::FromString(response->body()).As<CurrentWeather>();
+      http::MakeUrl(fmt::format("{}{}", config_.meteum_url, path), args);
+  return http_client_.CreateRequest()
+      .get(url)
+      .headers(headers)
+      .retry(config_.retries)
+      .timeout(config_.timeout)
+      .perform();
 }
 
 }  // namespace umeteum

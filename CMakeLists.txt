@@ -15,6 +15,7 @@ target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 add_executable(${PROJECT_NAME}_unittest
     unittests/models/current_weather_test.cpp
     unittests/models/daypart_weather_test.cpp
+    unittests/models/timeline_weather_test.cpp
 )
 target_link_libraries(${PROJECT_NAME}_unittest PRIVATE ${PROJECT_NAME} userver-utest)
 add_google_tests(${PROJECT_NAME}_unittest)
