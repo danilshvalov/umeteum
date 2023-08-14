@@ -1,5 +1,8 @@
 #pragma once
 
+#include <umeteum/models/coords.hpp>
+#include <umeteum/models/current_weather.hpp>
+
 #include <chrono>
 #include <memory>
 #include <string>
@@ -13,9 +16,6 @@ class Secdist;
 }  // namespace userver::storages::secdist
 
 namespace umeteum {
-
-class CurrentWeather;
-class Coords;
 
 struct ClientConfig {
   std::string meteum_url;
