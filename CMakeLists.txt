@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 project(umeteum CXX)
 
-add_subdirectory(third_party/userver)
-
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
   ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp
@@ -11,5 +9,5 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
 add_library(${PROJECT_NAME} OBJECT ${SOURCES})
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_link_libraries(${PROJECT_NAME} PRIVATE userver-core)
+target_link_libraries(${PROJECT_NAME} PUBLIC userver-core)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
