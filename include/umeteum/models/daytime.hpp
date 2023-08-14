@@ -1,5 +1,7 @@
 #pragma once
 
+#include <userver/formats/json_fwd.hpp>
+
 namespace umeteum {
 
 enum class Daytime {
@@ -7,4 +9,7 @@ enum class Daytime {
   kNight,
 };
 
-} // namespace umeteum
+Daytime Parse(const userver::formats::json::Value& value,
+              userver::formats::parse::To<Daytime>);
+
+}  // namespace umeteum

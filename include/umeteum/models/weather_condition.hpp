@@ -1,5 +1,7 @@
 #pragma once
 
+#include <userver/formats/json_fwd.hpp>
+
 namespace umeteum {
 
 enum class WeatherCondition {
@@ -8,6 +10,7 @@ enum class WeatherCondition {
   kCloudyAndLightRain,
   kCloudy,
   kOvercast,
+  kOvercastAndLightRain,
   kLightRain,
   kRain,
   kHeavyRain,
@@ -22,4 +25,7 @@ enum class WeatherCondition {
   kThunderstormWithHail,
 };
 
-} // namespace umeteum
+WeatherCondition Parse(const userver::formats::json::Value& value,
+                       userver::formats::parse::To<WeatherCondition>);
+
+}  // namespace umeteum

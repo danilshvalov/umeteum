@@ -31,39 +31,45 @@ UTEST(CurrentWeather, Parsing) {
       20,
       21,
       WeatherCondition::kOvercast,
-      2,
-      5.9,
-      WindDirection::kNorth,
-      745,
-      994,
-      83,
+      WindInfo{
+          2,
+          5.9,
+          WindDirection::kNorth,
+      },
+      PressureInfo{
+          745,
+          994,
+      },
+      Percentage{83},
       Daytime::kDay,
       false,
       Season::kSummer,
-      PrecipitationType::kRain,
-      PrecipitationStrength::kLight,
+      PrecipitationInfo{
+          PrecipitationType::kRain,
+          PrecipitationStrength::kLight,
+      },
       false,
-      Cloudness::kOvercast,
+      Cloudiness::kOvercast,
   };
 
-  auto result = formats::json::FromString(json).As<CurrentWeather>();
+  auto result = userver::formats::json::FromString(json).As<CurrentWeather>();
 
   EXPECT_EQ(result.temperature, expected.temperature);
   EXPECT_EQ(result.feels_like, expected.feels_like);
   EXPECT_EQ(result.condition, expected.condition);
-  EXPECT_EQ(result.wind_speed, expected.wind_speed);
-  EXPECT_EQ(result.wind_gust, expected.wind_gust);
-  EXPECT_EQ(result.wind_direction, expected.wind_direction);
-  EXPECT_EQ(result.pressure_mm, expected.pressure_mm);
-  EXPECT_EQ(result.pressure_pa, expected.pressure_pa);
+  EXPECT_EQ(result.wind.speed, expected.wind.speed);
+  EXPECT_EQ(result.wind.gust, expected.wind.gust);
+  EXPECT_EQ(result.wind.direction, expected.wind.direction);
+  EXPECT_EQ(result.pressure.mm, expected.pressure.mm);
+  EXPECT_EQ(result.pressure.pa, expected.pressure.pa);
   EXPECT_EQ(result.humidity, expected.humidity);
   EXPECT_EQ(result.daytime, expected.daytime);
   EXPECT_EQ(result.is_polar, expected.is_polar);
   EXPECT_EQ(result.season, expected.season);
-  EXPECT_EQ(result.precipitation_type, expected.precipitation_type);
-  EXPECT_EQ(result.precipitation_strength, expected.precipitation_strength);
+  EXPECT_EQ(result.precipitation.type, expected.precipitation.type);
+  EXPECT_EQ(result.precipitation.strength, expected.precipitation.strength);
   EXPECT_EQ(result.is_thunder, expected.is_thunder);
-  EXPECT_EQ(result.cloudness, expected.cloudness);
+  EXPECT_EQ(result.cloudiness, expected.cloudiness);
 }
 
-} // namespace umeteum
+}  // namespace umeteum

@@ -1,12 +1,14 @@
 #pragma once
 
-#include <umeteum/models/cloudness.hpp>
+#include <umeteum/models/cloudiness.hpp>
 #include <umeteum/models/daytime.hpp>
-#include <umeteum/models/precipitation_strength.hpp>
-#include <umeteum/models/precipitation_type.hpp>
+#include <umeteum/models/percentage.hpp>
+#include <umeteum/models/precipitation_info.hpp>
+#include <umeteum/models/pressure_info.hpp>
 #include <umeteum/models/season.hpp>
+#include <umeteum/models/units.hpp>
 #include <umeteum/models/weather_condition.hpp>
-#include <umeteum/models/wind_direction.hpp>
+#include <umeteum/models/wind_info.hpp>
 
 #include <cstdint>
 #include <string>
@@ -17,37 +19,29 @@ namespace umeteum {
 
 struct CurrentWeather {
   /// Температура (°C)
-  double temperature;
+  Temperature temperature;
   /// Ощущаемая температура (°C)
-  double feels_like;
+  Temperature feels_like;
   /// Погодные условия
   WeatherCondition condition;
-  /// Скорость ветра (в м/с)
-  double wind_speed;
-  /// Скорость порывов ветра (в м/с)
-  double wind_gust;
-  /// Направление ветра
-  WindDirection wind_direction;
-  /// Давление (в мм рт. ст.)
-  double pressure_mm;
-  /// Давление (в гектопаскалях)
-  double pressure_pa;
+  /// Информация о ветре
+  WindInfo wind;
+  /// Информация о давлении
+  PressureInfo pressure;
   /// Влажность воздуха (в процентах)
-  uint8_t humidity;
+  Percentage humidity;
   /// Светлое или темное время суток
   Daytime daytime;
   /// Признак того, что время суток, указанное в поле daytime, является полярным
   bool is_polar;
   /// Время года в данном населенном пункте
   Season season;
-  /// Тип осадков
-  PrecipitationType precipitation_type;
-  /// Сила осадков
-  PrecipitationStrength precipitation_strength;
+  /// Информация об осадках
+  PrecipitationInfo precipitation;
   /// Признак грозы
   bool is_thunder;
   /// Облачность
-  Cloudness cloudness;
+  Cloudiness cloudiness;
 };
 
 CurrentWeather Parse(const userver::formats::json::Value& value,
