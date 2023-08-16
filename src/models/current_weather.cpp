@@ -3,6 +3,7 @@
 #include <umeteum/exception.hpp>
 
 #include <userver/formats/json/value.hpp>
+#include <userver/formats/parse/common_containers.hpp>
 #include <userver/utils/trivial_map.hpp>
 
 namespace umeteum {
