@@ -14,18 +14,21 @@ constexpr userver::utils::TrivialBiMap kPhenomConditionString =
     [](auto selector) {
       using Condition = PhenomCondition;
       return selector()
-          .Case("fog", Condition::kFog)
-          .Case("mist", Condition::kMist)
-          .Case("smoke", Condition::kSmoke)
+          .Case("blowing-snow", Condition::kBlowingSnow)
+          .Case("continuous-heavy-rain", Condition::kContinuousHeavyRain)
+          .Case("drifting-snow", Condition::kDriftingSnow)
+          .Case("drizzle", Condition::kDrizzle)
           .Case("dust", Condition::kDust)
-          .Case("dust-suspension", Condition::kDustSuspension)
           .Case("duststorm", Condition::kDuststorm)
+          .Case("dust-suspension", Condition::kDustSuspension)
+          .Case("fog", Condition::kFog)
+          .Case("freezing-rain", Condition::kFreezingRain)
+          .Case("ice-pellets", Condition::kIcePellets)
+          .Case("mist", Condition::kMist)
+          .Case("moderate-rain", Condition::kModerateRain)
+          .Case("smoke", Condition::kSmoke)
           .Case("thunderstorm-with-duststorm",
                 Condition::kThunderstormWithDuststorm)
-          .Case("drifting-snow", Condition::kDriftingSnow)
-          .Case("blowing-snow", Condition::kBlowingSnow)
-          .Case("ice-pellets", Condition::kIcePellets)
-          .Case("freezing-rain", Condition::kFreezingRain)
           .Case("tornado", Condition::kTornado)
           .Case("volcanic-ash", Condition::kVolcanicAsh);
     };
