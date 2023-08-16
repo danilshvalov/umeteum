@@ -22,7 +22,7 @@ CurrentWeather Parse(const userver::formats::json::Value& value,
       value.As<PrecipitationInfo>(),
       value["is_thunder"].As<bool>(),
       value["cloudness"].As<Cloudiness>(),
-      value["phenom_condition"].As<PhenomCondition>(),
+      value["phenom_condition"].As<std::optional<PhenomCondition>>(),
   };
 }
 
