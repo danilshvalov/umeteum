@@ -4,7 +4,7 @@
 
 namespace umeteum {
 
-enum class WeatherCondition {
+enum class Condition {
   kClear,
   kPartlyCloudy,
   kCloudyAndLightRain,
@@ -25,7 +25,7 @@ enum class WeatherCondition {
   kThunderstormWithHail,
 };
 
-WeatherCondition Parse(const userver::formats::json::Value& value,
-                       userver::formats::parse::To<WeatherCondition>);
+Condition Parse(const userver::formats::json::Value& value,
+                userver::formats::parse::To<Condition>);
 
 }  // namespace umeteum

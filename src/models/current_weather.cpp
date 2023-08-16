@@ -12,7 +12,7 @@ CurrentWeather Parse(const userver::formats::json::Value& value,
   return CurrentWeather{
       value["temp"].As<Temperature>(),
       value["feels_like"].As<Temperature>(),
-      value["condition"].As<WeatherCondition>(),
+      value["condition"].As<Condition>(),
       value.As<WindInfo>(),
       value.As<PressureInfo>(),
       value["humidity"].As<Percentage>(),
@@ -22,6 +22,7 @@ CurrentWeather Parse(const userver::formats::json::Value& value,
       value.As<PrecipitationInfo>(),
       value["is_thunder"].As<bool>(),
       value["cloudness"].As<Cloudiness>(),
+      value["phenom_condition"].As<PhenomCondition>(),
   };
 }
 

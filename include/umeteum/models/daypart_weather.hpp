@@ -19,7 +19,7 @@ struct DaypartWeather {
   Percentage humidity;
   Cloudiness cloudiness;
   PrecipitationInfo precipitation;
-  WeatherCondition condition;
+  Condition condition;
   Temperature feels_like;
   Daytime daytime;
   bool is_polar;

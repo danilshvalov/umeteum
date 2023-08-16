@@ -11,7 +11,7 @@ namespace umeteum {
 
 struct TimelineWeather {
   Cloudiness cloudiness;
-  WeatherCondition condition;
+  Condition condition;
   bool is_thunder;
   PrecipitationInfo precipitation;
   Timestamp timestamp;

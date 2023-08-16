@@ -51,7 +51,7 @@ UTEST(DaypartWeather, Parsing) {
           PrecipitationType::kRain,
           PrecipitationStrength::kLight,
       },
-      WeatherCondition::kOvercastAndLightRain,
+      Condition::kOvercastAndLightRain,
       0,
       Daytime::kNight,
       false,

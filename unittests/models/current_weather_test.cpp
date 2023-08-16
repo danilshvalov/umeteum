@@ -30,7 +30,7 @@ UTEST(CurrentWeather, Parsing) {
   CurrentWeather expected = {
       20,
       21,
-      WeatherCondition::kOvercast,
+      Condition::kOvercast,
       WindInfo{
           2,
           5.9,

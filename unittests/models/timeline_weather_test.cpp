@@ -21,7 +21,7 @@ UTEST(TimelineWeather, Parsing) {
 
   TimelineWeather expected = {
       Cloudiness::kClear,
-      WeatherCondition::kClear,
+      Condition::kClear,
       false,
       PrecipitationInfo{
           PrecipitationType::kNoPrecipitation,

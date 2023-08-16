@@ -3,6 +3,7 @@
 #include <umeteum/models/cloudiness.hpp>
 #include <umeteum/models/daytime.hpp>
 #include <umeteum/models/percentage.hpp>
+#include <umeteum/models/phenom_condition.hpp>
 #include <umeteum/models/precipitation_info.hpp>
 #include <umeteum/models/pressure_info.hpp>
 #include <umeteum/models/season.hpp>
@@ -10,7 +11,7 @@
 #include <umeteum/models/weather_condition.hpp>
 #include <umeteum/models/wind_info.hpp>
 
-#include <cstdint>
+#include <optional>
 #include <string>
 
 #include <userver/formats/json_fwd.hpp>
@@ -23,7 +24,7 @@ struct CurrentWeather {
   /// Ощущаемая температура (°C)
   Temperature feels_like;
   /// Погодные условия
-  WeatherCondition condition;
+  Condition condition;
   /// Информация о ветре
   WindInfo wind;
   /// Информация о давлении
@@ -42,6 +43,8 @@ struct CurrentWeather {
   bool is_thunder;
   /// Облачность
   Cloudiness cloudiness;
+  /// Дополнительное погодное явление
+  std::optional<PhenomCondition> phenom_condition;
 };
 
 CurrentWeather Parse(const userver::formats::json::Value& value,
