@@ -1,13 +1,13 @@
 #pragma once
 
 #include <umeteum/models/cloudiness.hpp>
+#include <umeteum/models/condition.hpp>
 #include <umeteum/models/daytime.hpp>
 #include <umeteum/models/percentage.hpp>
 #include <umeteum/models/precipitation_info.hpp>
 #include <umeteum/models/pressure_info.hpp>
 #include <umeteum/models/temperature_range.hpp>
 #include <umeteum/models/units.hpp>
-#include <umeteum/models/weather_condition.hpp>
 #include <umeteum/models/wind_info.hpp>
 
 namespace umeteum {

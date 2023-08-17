@@ -3,7 +3,7 @@
 #include <umeteum/models/cloudiness.hpp>
 #include <umeteum/models/precipitation_info.hpp>
 #include <umeteum/models/units.hpp>
-#include <umeteum/models/weather_condition.hpp>
+#include <umeteum/models/condition.hpp>
 
 #include <chrono>
 

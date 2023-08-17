@@ -23,7 +23,7 @@ UTEST(DaypartWeather, Parsing) {
        "prec_type": 1,
        "prec_strength": 0.25,
        "icon": "ovc_-ra",
-       "condition": "overcast-and-light-rain",
+       "condition": "overcast",
        "feels_like": 0,
        "daytime": "n",
        "polar": false
@@ -51,7 +51,7 @@ UTEST(DaypartWeather, Parsing) {
           PrecipitationType::kRain,
           PrecipitationStrength::kLight,
       },
-      Condition::kOvercastAndLightRain,
+      Condition::kOvercast,
       0,
       Daytime::kNight,
       false,

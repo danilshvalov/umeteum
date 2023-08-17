@@ -7,10 +7,8 @@ namespace umeteum {
 enum class Condition {
   kClear,
   kPartlyCloudy,
-  kCloudyAndLightRain,
   kCloudy,
   kOvercast,
-  kOvercastAndLightRain,
   kLightRain,
   kRain,
   kHeavyRain,
