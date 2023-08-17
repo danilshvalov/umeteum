@@ -33,6 +33,9 @@ const std::unordered_map<std::string, Condition> kConditionString = {
 Condition Parse(const userver::formats::json::Value& value,
                 userver::formats::parse::To<Condition>) {
   auto str = value.As<std::string>();
+  if (auto it = kConditionString.find(str); it != kConditionString.end()) {
+    return it->second;
+  }
   for (const auto& [key, value] : kConditionString) {
     if (str.find(key) == 0) {
       return value;
